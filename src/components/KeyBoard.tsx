@@ -1,17 +1,17 @@
 const KeyBoard = ({
   alphabet,
   handleSave,
-  guessletters,
+  guessLetters,
   word,
 }: {
   alphabet: string;
   handleSave: (letter: string) => void;
-  guessletters: string[];
+  guessLetters: string[];
   word: string;
 }) => {
   const addClass = (letter: string) => {
-    const isGuessed = guessletters.includes(letter);
-    const hasLetter = word.includes(letter);
+    const isGuessed = guessLetters.includes(letter);
+    const hasLetter = word.split("").includes(letter);
 
     if (isGuessed && hasLetter) return "green";
     if (isGuessed && !hasLetter) return "red";

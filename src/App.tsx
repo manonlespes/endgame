@@ -7,7 +7,7 @@ import KeyBoard from "./components/KeyBoard";
 
 function App() {
   const [currentWord, setCurrentWord] = useState("react");
-  const [guessletters, setGuessLetters] = useState<string[]>([]);
+  const [guessLetters, setGuessLetters] = useState<string[]>([]);
 
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -29,11 +29,11 @@ function App() {
       <main>
         <Notice />
         <Languages />
-        <Letters word={currentWord} />
+        <Letters word={currentWord} guessLetters={guessLetters} />
         <KeyBoard
           alphabet={alphabet}
           handleSave={letterSaved}
-          guessletters={guessletters}
+          guessLetters={guessLetters}
           word={currentWord}
         />
       </main>

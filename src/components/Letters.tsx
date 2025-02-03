@@ -1,10 +1,18 @@
-const Letters = ({ word }: { word: string }) => {
+const Letters = ({
+  word,
+  guessLetters,
+}: {
+  word: string;
+  guessLetters: string[];
+}) => {
   return (
     <section className="letter-container">
       {word.split("").map((letter, index) => {
         return (
           <div className="letter-wrapper" key={`${letter}-${index}`}>
-            <span className="letter">{letter}</span>
+            <span className="letter">
+              {guessLetters.includes(letter) ? letter : ""}
+            </span>
           </div>
         );
       })}
