@@ -1,0 +1,141 @@
+header {
+  text-align: center;
+  max-width: 350px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #f9f4da;
+  font-size: clamp(1.15rem, 1.25rem, 1.75rem);
+  font-weight: 500;
+}
+
+h2 {
+  color: #f9f4da;
+  font-size: clamp(1.1rem, 1.15rem, 1.5rem);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.instructions {
+  color: #8e8e8e;
+  font-size: clamp(0.875rem, 1rem, 1.25rem);
+}
+
+.notice {
+  display: block;
+  max-width: 350px;
+  background-color: #10a95b;
+  padding: 6px;
+  border-radius: 4px;
+
+  text-align: center;
+}
+
+.notice p {
+  color: #f9f4da;
+  font-size: clamp(0.875rem, 1rem, 1.25rem);
+  margin: 0;
+}
+
+.languages-container {
+  max-width: 350px;
+  display: block;
+  margin-top: 36px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.languages-container ul {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+li {
+  border-radius: 4.5px;
+  padding: 5px;
+
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.letter-container {
+  margin-top: 36px;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter-wrapper {
+  background-color: #323232;
+  padding: 8.5px 6.5px;
+  width: 40px;
+  height: 40px;
+  border-bottom: 1px solid #f9f4da;
+  text-align: center;
+}
+
+.letter {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #f9f4da;
+}
+
+.keyboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 60px;
+}
+
+.key {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  padding: 6px;
+
+  background-color: #fcba29;
+  border: 1px solid #d7d7d7;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+
+  color: #1e1e1e;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.key:hover,
+.key:focus {
+  transition: all 0.3s ease-in-out;
+  background-color: #de9d12;
+}
+
+.red {
+  background-color: #ec5d49;
+}
+.key.red:hover,
+.key.red:focus {
+  transition: all 0.3s ease-in-out;
+  background-color: #ec5d49;
+}
+
+.green {
+  background-color: #10a95b;
+}
+.key.green:hover,
+.key.green:focus {
+  transition: all 0.3s ease-in-out;
+  background-color: #10a95b;
+}
