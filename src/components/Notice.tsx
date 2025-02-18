@@ -1,10 +1,13 @@
-const Notice = () => {
+const Notice = ({
+  noticeClass,
+  message,
+}: {
+  noticeClass: string;
+  message: JSX.Element | null;
+}) => {
   return (
     <>
-      <div className="notice">
-        <h2>You win</h2>
-        <p>Well done! 🎉</p>
-      </div>
+      <div className={`notice ${noticeClass}`}>{message}</div>
     </>
   );
 };

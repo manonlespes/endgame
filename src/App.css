@@ -26,7 +26,6 @@ h2 {
 .notice {
   display: block;
   max-width: 350px;
-  background-color: #10a95b;
   padding: 6px;
   border-radius: 4px;
 
@@ -37,6 +36,19 @@ h2 {
   color: #f9f4da;
   font-size: clamp(0.875rem, 1rem, 1.25rem);
   margin: 0;
+}
+
+.notice.won {
+  background-color: #10a95b;
+}
+
+.notice.lost {
+  background-color: #ba2a2a;
+}
+
+.notice.farewell {
+  background-color: #7a5ea7;
+  border: 1px dashed #323232;
 }
 
 .languages-container {
@@ -58,11 +70,26 @@ ul {
 }
 
 li {
+  position: relative;
   border-radius: 4.5px;
   padding: 5px;
 
   font-size: 12px;
   font-weight: bold;
+}
+
+li.lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .letter-container {
@@ -138,4 +165,18 @@ li {
 .key.green:focus {
   transition: all 0.3s ease-in-out;
   background-color: #10a95b;
+}
+
+.new-game {
+  margin: 45px auto 0;
+  display: block;
+  min-width: 100%;
+
+  background-color: #11b5e5;
+  color: #1e1e1e;
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  padding: 15px 25px;
+  font-size: 1rem;
+  font-weight: bold;
 }

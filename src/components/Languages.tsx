@@ -1,6 +1,6 @@
 import { languages } from "../assets/language";
 
-const Languages = () => {
+const Languages = ({ wrongGuessCount }: { wrongGuessCount: number }) => {
   return (
     <>
       <section className="languages-container">
@@ -9,6 +9,7 @@ const Languages = () => {
             return (
               <li
                 key={index}
+                className={`${index < wrongGuessCount ? "lost" : ""}`}
                 style={{
                   backgroundColor: `${lang.backgroundColor}`,
                   color: `${lang.color}`,

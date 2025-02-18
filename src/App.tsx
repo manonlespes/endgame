@@ -4,6 +4,8 @@ import Languages from "./components/Languages";
 import Notice from "./components/Notice";
 import Letters from "./components/Letters";
 import KeyBoard from "./components/KeyBoard";
+import { languages } from "./assets/language";
+import { getFarewellText } from "./assets/utils";
 
 function App() {
   const [currentWord, setCurrentWord] = useState("react");
@@ -17,6 +19,48 @@ function App() {
     );
   };
 
+  const wrongGuessCount = guessLetters.filter(
+    (letter) => !currentWord.split("").includes(letter)
+  ).length;
+  const isGameLost = wrongGuessCount === languages.length - 1;
+  const isGameWon = currentWord.split("").every((letter) => {
+    return guessLetters.includes(letter);
+  });
+  const isGameOver = isGameWon || isGameLost;
+  const isLastGuessed = guessLetters[guessLetters.length - 1];
+  const isWrongGuessed = !currentWord.split("").includes(isLastGuessed);
+  const noticeClass = isGameOver
+    ? isGameWon
+      ? "won"
+      : "lost"
+    : isWrongGuessed && wrongGuessCount > 0
+    ? "farewell"
+    : "";
+
+  const renderGameStatus = () => {
+    if (!isGameOver && isWrongGuessed && wrongGuessCount > 0) {
+      return <p>{getFarewellText(languages[wrongGuessCount - 1].name)}</p>;
+    }
+    if (isGameWon)
+      return (
+        <>
+          <h2>You win!</h2>
+          <p>Well done! 🎉</p>
+        </>
+      );
+
+    if (isGameLost) {
+      return (
+        <>
+          <h2>Game over!</h2>
+          <p>You lose! Better start learning Assembly 😭</p>
+        </>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <>
       <header>
@@ -27,8 +71,8 @@ function App() {
         </p>
       </header>
       <main>
-        <Notice />
-        <Languages />
+        <Notice noticeClass={noticeClass} message={renderGameStatus()} />
+        <Languages wrongGuessCount={wrongGuessCount} />
         <Letters word={currentWord} guessLetters={guessLetters} />
         <KeyBoard
           alphabet={alphabet}
@@ -36,6 +80,7 @@ function App() {
           guessLetters={guessLetters}
           word={currentWord}
         />
+        {isGameOver && <button className="new-game">New game</button>}
       </main>
     </>
   );
