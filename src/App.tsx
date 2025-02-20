@@ -26,6 +26,7 @@ function App() {
   const isGameWon = currentWord.split("").every((letter) => {
     return guessLetters.includes(letter);
   });
+  const nbAttemptLeft = languages.length - 1 - wrongGuessCount;
   const isGameOver = isGameWon || isGameLost;
   const isLastGuessed = guessLetters[guessLetters.length - 1];
   const isWrongGuessed = !currentWord.split("").includes(isLastGuessed);
@@ -73,12 +74,18 @@ function App() {
       <main>
         <Notice noticeClass={noticeClass} message={renderGameStatus()} />
         <Languages wrongGuessCount={wrongGuessCount} />
-        <Letters word={currentWord} guessLetters={guessLetters} />
+        <Letters
+          word={currentWord}
+          guessLetters={guessLetters}
+          lastGuess={isLastGuessed}
+          nbAttemptLeft={nbAttemptLeft}
+        />
         <KeyBoard
           alphabet={alphabet}
           handleSave={letterSaved}
           guessLetters={guessLetters}
           word={currentWord}
+          disableKeyBoard={isGameOver}
         />
         {isGameOver && <button className="new-game">New game</button>}
       </main>

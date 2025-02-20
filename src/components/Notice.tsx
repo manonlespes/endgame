@@ -7,7 +7,9 @@ const Notice = ({
 }) => {
   return (
     <>
-      <div className={`notice ${noticeClass}`}>{message}</div>
+      <div aria-live="polite" role="status" className={`notice ${noticeClass}`}>
+        {message}
+      </div>
     </>
   );
 };

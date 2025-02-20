@@ -3,11 +3,13 @@ const KeyBoard = ({
   handleSave,
   guessLetters,
   word,
+  disableKeyBoard,
 }: {
   alphabet: string;
   handleSave: (letter: string) => void;
   guessLetters: string[];
   word: string;
+  disableKeyBoard: boolean;
 }) => {
   const addClass = (letter: string) => {
     const isGuessed = guessLetters.includes(letter);
@@ -24,10 +26,15 @@ const KeyBoard = ({
       {alphabet.split("").map((letter, index) => {
         return (
           <button
-            className={`key ${addClass(letter)}`}
+            className={`key ${addClass(letter)} ${
+              disableKeyBoard ? "disabled" : ""
+            }`}
             key={`${letter}-${index}`}
             onClick={() => handleSave(letter)}
+            disabled={disableKeyBoard}
+            aria-disabled={guessLetters.includes(letter)}
           >
+            <span className="sr-only">Letter</span>
             {letter}
           </button>
         );

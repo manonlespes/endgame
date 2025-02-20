@@ -167,6 +167,12 @@ li.lost::before {
   background-color: #10a95b;
 }
 
+.key.disabled,
+.key.green.disabled,
+.key.red.disabled {
+  opacity: 0.5;
+}
+
 .new-game {
   margin: 45px auto 0;
   display: block;
@@ -179,4 +185,17 @@ li.lost::before {
   padding: 15px 25px;
   font-size: 1rem;
   font-weight: bold;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
 }
