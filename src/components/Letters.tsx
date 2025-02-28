@@ -1,22 +1,38 @@
 const Letters = ({
+  isGameLost,
   word,
   guessLetters,
   lastGuess,
   nbAttemptLeft,
 }: {
+  isGameLost: boolean;
   word: string;
   guessLetters: string[];
   lastGuess: string;
   nbAttemptLeft: number;
 }) => {
+  const shouldRevealLetter = (letter: string) => {
+    if (guessLetters.includes(letter) || isGameLost) {
+      return letter;
+    }
+    return "";
+  };
+
+  const missingLetterClass = (letter: string) => {
+    if (isGameLost) {
+      return guessLetters.includes(letter) ? "" : "missing-letter";
+    }
+    return "";
+  };
+
   return (
     <>
       <section className="letter-container">
         {word.split("").map((letter, index) => {
           return (
             <div className="letter-wrapper" key={`${letter}-${index}`}>
-              <span className="letter">
-                {guessLetters.includes(letter) ? letter : ""}
+              <span className={`letter ${missingLetterClass(letter)}`}>
+                {shouldRevealLetter(letter)}
               </span>
             </div>
           );

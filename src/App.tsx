@@ -5,10 +5,11 @@ import Notice from "./components/Notice";
 import Letters from "./components/Letters";
 import KeyBoard from "./components/KeyBoard";
 import { languages } from "./assets/language";
-import { getFarewellText } from "./assets/utils";
+import { getFarewellText, getNewWord } from "./assets/utils";
+import ReactConfetti from "react-confetti";
 
 function App() {
-  const [currentWord, setCurrentWord] = useState("react");
+  const [currentWord, setCurrentWord] = useState<string>(() => getNewWord());
   const [guessLetters, setGuessLetters] = useState<string[]>([]);
 
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -62,8 +63,14 @@ function App() {
     return null;
   };
 
+  const handleNewGame = () => {
+    setCurrentWord(getNewWord());
+    setGuessLetters([]);
+  };
+
   return (
     <>
+      {isGameWon && <ReactConfetti />}
       <header>
         <h1>Assembly: Endgame</h1>
         <p className="instructions">
@@ -75,6 +82,7 @@ function App() {
         <Notice noticeClass={noticeClass} message={renderGameStatus()} />
         <Languages wrongGuessCount={wrongGuessCount} />
         <Letters
+          isGameLost={isGameLost}
           word={currentWord}
           guessLetters={guessLetters}
           lastGuess={isLastGuessed}
@@ -87,7 +95,11 @@ function App() {
           word={currentWord}
           disableKeyBoard={isGameOver}
         />
-        {isGameOver && <button className="new-game">New game</button>}
+        {isGameOver && (
+          <button onClick={handleNewGame} className="new-game">
+            New game
+          </button>
+        )}
       </main>
     </>
   );

@@ -118,6 +118,10 @@ li.lost::before {
   color: #f9f4da;
 }
 
+.missing-letter {
+  color: #ec5d49;
+}
+
 .keyboard-container {
   display: flex;
   flex-wrap: wrap;
